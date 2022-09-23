@@ -16,6 +16,12 @@
     color: aliceblue;
   }
   
+  .MealsError{
+    text-align: center;
+    background-color: red;
+    color: beige;
+  }
+  
   @keyframes meals-appear {
     from {
       opacity: 0;
