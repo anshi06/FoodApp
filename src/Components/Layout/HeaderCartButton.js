@@ -4,9 +4,9 @@ import CartIcon from "../Cart/CartIcon";
 import CartContext from "../../Store/cart-context";
 
 const HeaderCartButton = (props) => {
-  const [btnIsHighlighted, setbtnIsHighlighted] = useState(false);
-  const cartctx = useContext(CartContext);
-  const { items } = cartctx;
+  const [btnIsHighlighted, setbtnIsHighlighted] = useState(false); // for bump
+  const cartctx = useContext(CartContext); // using cartContext to increase the amount of cart items
+  const { items } = cartctx;// object destructuring
   const numberOfCartItems = items.reduce((currNumber, item)=>{
     return currNumber+item.amount;
   }, 0);
@@ -22,9 +22,9 @@ const HeaderCartButton = (props) => {
       setbtnIsHighlighted(false);
     }, 300);
     return () =>{
-      clearTimeout(timer);
+      clearTimeout(timer); // need to clear the old time using clean up function it is automatically runs after every component re-evaluation.
     }
-  }, [items])
+  }, [items])// useEffect is used for bump the cart button when items are added into the cart (Animation)
   return (
     <button className={btnClasses} onClick={props.onClick}>
       <span className={classes.icon}>

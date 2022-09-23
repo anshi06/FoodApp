@@ -1,25 +1,25 @@
 import { useReducer } from "react";
 import CartContext from "./cart-context";
 const defaultCartState = {
-  items: [],
-  totalAmount: 0,
+  items: [], // items Array contains name,price,description,amount,key
+  totalAmount: 0, // total price
 };
 const cartReducer = (state, action) => {
   if (action.type === "ADD") {
     const updatedtotalAmount =
-      state.totalAmount + action.item.price * action.item.amount;
+      state.totalAmount + action.item.price * action.item.amount; // Total price 
     const existingCartItemIndex = state.items.findIndex(
       (item) => item.id === action.item.id
-    );
+    ); // if item is already present in cart return true and fin index
     const existingCartItem = state.items[existingCartItemIndex];
 
     let updatedItems;
     if (existingCartItem) {
       const updatedItem = {
         ...existingCartItem,
-        amount: existingCartItem.amount + action.item.amount,
-      };
-      updatedItems = [...state.items];
+        amount: existingCartItem.amount + action.item.amount, // updating amount of existing cart item
+      }; // updatedItem is an updated item object.
+      updatedItems = [...state.items]; //Array of updating items after adding
       updatedItems[existingCartItemIndex] = updatedItem;
     } else {
       updatedItems = state.items.concat(action.item);
@@ -38,7 +38,7 @@ const cartReducer = (state, action) => {
       );
       const existingCartItem = state.items[existingCartItemIndex];
       const updatedtotalAmount =
-      state.totalAmount - existingCartItem.price;
+      state.totalAmount - existingCartItem.price; // total price
       let updatedItems;
       if (existingCartItem.amount === 1) {
         updatedItems = state.items.filter(item => item.id !== action.id);
