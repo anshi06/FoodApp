@@ -24,7 +24,7 @@ Tools and technology used:
 
 3>fetch API is used to fetch the data from database and sending the data to the database.
 
-4> Firefox service is used for creating realtime database.
+4> Firebase service is used for creating realtime database.
 
 
 NOTE: As this project for only practice purpose , so realtime database is used for starting purpose.
